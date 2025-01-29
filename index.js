@@ -2,10 +2,11 @@ const express = require("express");
 const {Usermodel ,Todomodel} = require("./db");     
 const jwt = require("jsonwebtoken");
 const { default: mongoose } = require("mongoose");
+require('dotenv').config();
 
-const connection = mongoose.connect("mongodb+srv://chavdasharad77:(Sharad_77_)@cluster0.vbssd.mongodb.net/user_app");
+const connection = mongoose.connect(process.env.MONGODB_URI);
 
-const secrate = "sharad";
+const secret= process.env.JWT_SECRET;
 
 const app = express();
 app.use(express.json());
